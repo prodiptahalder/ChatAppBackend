@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const http = require('http');
+var cors = require('cors')
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -29,15 +30,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //parse json data
 app.use(bodyParser.json());
 //set headers to avoid C-Cross O-Origin R-Resource S-Sharing error
-app.use("*", (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");//giving access control to *, i.e., any client
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    if(req.method === "OPTIONS"){
-        res.header("Access-Control-Allow-Method", "PUT, POST, PATCH, DELETE, GET");
-        return res.status(200).json({});
-    }
-    next();
-});
+app.use(cors());
 //MIDDLEWARE
 
 

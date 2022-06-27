@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 //using dotenv module to access environment Variable
 require("dotenv").config();
 
+console.log(`${process.env.MONGO_URL}`);
 // DATABASE
 mongoose.connect(`${process.env.MONGO_URL}`,
 {

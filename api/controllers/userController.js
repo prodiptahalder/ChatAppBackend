@@ -25,7 +25,7 @@ const register = (req, res, next) => {
                     message+="exists";
                     res.status(400).json({message, error});
                 }
-                res.status(400).json({message: "error", error});
+                else res.status(400).json({message: "error", error});
             })
         }
     });
